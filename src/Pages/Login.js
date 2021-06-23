@@ -11,8 +11,13 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React from "react";
-
+import { useHistory } from "react-router-dom";
 function Login() {
+  const history = useHistory();
+  const routeChange = () => {
+    let path = `Signup`;
+    history.push(path);
+  };
   const useStyle = makeStyles((theme) => {
     return {
       page: {
@@ -59,6 +64,10 @@ function Login() {
       },
       submit: {
         margin: theme.spacing(3, 0, 2),
+      },
+      flexRow: {
+        display: "flex",
+        justifyContent: "space-between",
       },
     };
   });
@@ -124,8 +133,12 @@ function Login() {
             >
               Sign In
             </Button>
-
-            <Button to="/ForgetPassword">Forgot password?</Button>
+            <div className={classes.flexRow}>
+              <Button to="/ForgetPassword">Forgot password?</Button>
+              <Button onClick={routeChange} to="/signup">
+                Signup
+              </Button>
+            </div>
           </form>
         </div>
       </Container>

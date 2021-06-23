@@ -1,7 +1,7 @@
 import React from "react";
 
-function Header() {
+function Layout() {
   return <div></div>;
 }
 
-export default Header;
+export default Layout;
