@@ -1,2 +1,3 @@
 import useAppContext from "./useAppContext";
-export { useAppContext };
+import useFirebase from "./useFirebase";
+export { useAppContext, useFirebase };

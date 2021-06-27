@@ -11,12 +11,46 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useAppContext } from "../Hooks";
+
 function Signup() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const { signup } = useAppContext();
+
   const history = useHistory();
   const routeChange = () => {
     let path = `Login`;
     history.push(path);
+  };
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    const userData = {
+      email: email,
+      password: password,
+      displayName: name,
+    };
+    try {
+      const res = await signup(userData.email, userData.password);
+      await res.user.updateProfile({
+        displayName: userData.displayName,
+      });
+      alert("Success");
+    } catch (error) {
+      console.log("Error", error);
+    }
   };
   const useStyle = makeStyles((theme) => {
     return {
@@ -104,10 +138,24 @@ function Signup() {
               margin="normal"
               required
               fullWidth
+              id="name"
+              label="Full Name"
+              name="name"
+              autoComplete="name"
+              onChange={handleName}
+              autoFocus
+              color="lightseagreen"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
               id="email"
               label="Email Address"
               name="email"
               autoComplete="email"
+              onChange={handleEmail}
               autoFocus
               color="lightseagreen"
             />
@@ -121,16 +169,18 @@ function Signup() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handlePassword}
             />
 
             <Button
+              onClick={handleSignup}
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Sign Up
             </Button>
             <div className={classes.flexRow}>
               <Button to="/ForgetPassword">Forgot password?</Button>
