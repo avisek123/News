@@ -48,6 +48,7 @@ function Signup() {
         displayName: userData.displayName,
       });
       alert("Success");
+      history.push("/");
     } catch (error) {
       console.log("Error", error);
     }

@@ -11,12 +11,30 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useAppContext } from "../Hooks";
+
 function Login() {
+  const { login } = useAppContext();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const history = useHistory();
   const routeChange = () => {
     let path = `Signup`;
     history.push(path);
+  };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log(email);
+    console.log(password);
+    try {
+      await login(email, password);
+      alert("Success");
+      history.push("/");
+    } catch (error) {
+      console.log("Error", error);
+    }
   };
   const useStyle = makeStyles((theme) => {
     return {
@@ -98,7 +116,7 @@ function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={handleLogin}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -109,6 +127,10 @@ function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               color="lightseagreen"
             />
             <TextField
@@ -121,7 +143,11 @@ function Login() {
               type="password"
               id="password"
               color="lightseagreen"
-              autoComplete="current-password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              autoComplete="password"
             />
 
             <Button
