@@ -5,7 +5,7 @@ import { database } from "../Configs";
 import { useAppContext } from "../Hooks";
 
 const useStory = () => {
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const { user } = useAppContext();
   const fetchData = async () => {
     try {
@@ -13,7 +13,6 @@ const useStory = () => {
         const storyArray = [];
         if (snap.exists()) {
           const obj = snap.val();
-
           for (const storyID in obj) {
             const story = { storyID, ...obj[storyID] };
             storyArray.push(story);

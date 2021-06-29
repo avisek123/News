@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  toolBar: theme.mixins.toolbar,
 }));
 
 function Header() {
