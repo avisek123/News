@@ -1,3 +1,4 @@
 import useAppContext from "./useAppContext";
 import useFirebase from "./useFirebase";
-export { useAppContext, useFirebase };
+import useStory from "./useStory";
+export { useAppContext, useFirebase, useStory };
