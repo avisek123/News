@@ -7,9 +7,13 @@ const Home = () => {
   const { user } = useAppContext();
   const { data } = useStory();
   const handleDelete = async (id) => {
+    console.log(id);
     try {
-      await database().ref(`Story/${user?.uid}/${id}`);
-    } catch (error) {}
+      await database.ref(`Stories/${user?.uid}/${id}`).remove();
+      alert("Success");
+    } catch (error) {
+      console.log("Error", error.message);
+    }
   };
   return (
     <Container>
@@ -17,10 +21,7 @@ const Home = () => {
       <Grid container spacing={10}>
         {data?.map((item, index) => (
           <Grid item key={index} xs={12} md={6} lg={4}>
-            <StoryCard
-              story={item}
-              handleDelete={handleDelete(item?.storyID)}
-            />
+            <StoryCard story={item} handleDelete={handleDelete} />
           </Grid>
         ))}
       </Grid>

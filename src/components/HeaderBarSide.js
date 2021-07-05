@@ -46,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
 const HeaderBarSide = () => {
   const { user } = useAppContext();
   const history = useHistory();
+  const routeChangeToCraete = () => {
+    let path = `create`;
+    history.push(path);
+  };
   const { logout } = useFirebase();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -136,10 +140,10 @@ const HeaderBarSide = () => {
       <div className={classes.grow}>
         <div className={classes.sectionDesktop}>
           <Button
+            onClick={routeChangeToCraete}
             variant="outlined"
             className={classes.buttonBorder}
             style={{ color: "#fff" }}
-            href="#outlined-buttons"
           >
             Create
           </Button>
