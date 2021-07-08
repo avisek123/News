@@ -12,6 +12,7 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   card: {
     marginTop: theme.spacing(15),
+    cursor: "pointer",
   },
 }));
 const StoryCard = ({ story, handleDelete }) => {
@@ -19,7 +20,10 @@ const StoryCard = ({ story, handleDelete }) => {
   const classes = useStyles();
   return (
     <div className={classes.card}>
-      <Card elevation={1}>
+      <Card
+        elevation={1}
+        onClick={() => history.push(`${story.storyID}/ViewStory`)}
+      >
         <CardHeader
           title={story?.title}
           action={
