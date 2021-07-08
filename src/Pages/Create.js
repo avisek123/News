@@ -3,6 +3,7 @@ import { Button, Container, makeStyles, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { database } from "../Configs";
 import { useAppContext } from "../Hooks";
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -19,10 +20,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Create = () => {
   const classes = useStyles();
+  const history = useHistory();
   const { user } = useAppContext();
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       await database.ref(`Stories/${user?.uid}`).push({
         title: title,
@@ -30,6 +33,7 @@ const Create = () => {
       });
 
       alert("Success");
+      history.push("/");
     } catch (error) {
       console.log("Error", error.message);
     }

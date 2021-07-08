@@ -27,7 +27,8 @@ const Edit = () => {
   const { user } = useAppContext();
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
-  const handleUpdate = async () => {
+  const handleUpdate = async (e) => {
+    e.preventDefault();
     try {
       await database.ref(`Stories/${user?.uid}/${res?.storyID}`).set({
         title: title,
@@ -86,6 +87,7 @@ const Edit = () => {
             fullWidth
             variant="contained"
             color="secondary"
+            // onClick={() => history.push("/")}
             className={classes.submit}
           >
             Update
