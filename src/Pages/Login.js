@@ -26,8 +26,6 @@ function Login() {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
     try {
       await login(email, password);
       alert("Success");
@@ -42,14 +40,30 @@ function Login() {
         width: "100%",
         padding: theme.spacing(5),
       },
-      avatar: {
-        flexGrow: 1,
+      btn: {
+        //flexGrow: 1,
+        display: "flex",
+        width: "10%",
+        backgroundColor: "teal",
       },
       paper: {
         marginTop: theme.spacing(10),
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+      },
+      login: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundSize: "cover",
+        height: `calc(${100}vh)`,
+        background: `linear-gradient(
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.5)
+        ),
+        url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");`,
       },
 
       container: {
@@ -82,6 +96,7 @@ function Login() {
       },
       submit: {
         margin: theme.spacing(3, 0, 2),
+        backgroundColor: "#ff7779",
       },
       flexRow: {
         display: "flex",
@@ -91,18 +106,23 @@ function Login() {
   });
   const classes = useStyle();
   return (
-    <div>
+    <div className={classes.login}>
       <AppBar
-        // elevation={0}
+        elevation={0}
         position="fixed"
-        // style={{
-        //   backgroundColor: "#ff6600",
-        // }}
+        style={{
+          backgroundColor: "transparent",
+        }}
       >
         <Toolbar>
-          {/* <span className={classes.avatar}>
-            <Avatar src="https://github.com/reedbarger/hooks-news/blob/master/public/logo.png?raw=true" />
-          </span> */}
+          <Button
+            // onClick={routeChangeToCraete}
+            variant="contained"
+            className={classes.btn}
+            style={{ color: "#fff" }}
+          >
+            Signup
+          </Button>
         </Toolbar>
       </AppBar>
 
@@ -127,6 +147,7 @@ function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              style={{ backgroundColor: "#fff" }}
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -136,6 +157,7 @@ function Login() {
             <TextField
               variant="outlined"
               margin="normal"
+              style={{ backgroundColor: "#fff" }}
               required
               fullWidth
               name="password"
