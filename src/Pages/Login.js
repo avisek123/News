@@ -95,14 +95,14 @@ function Login() {
       <AppBar
         // elevation={0}
         position="fixed"
-        style={{
-          backgroundColor: "#ff6600",
-        }}
+        // style={{
+        //   backgroundColor: "#ff6600",
+        // }}
       >
         <Toolbar>
-          <span className={classes.avatar}>
+          {/* <span className={classes.avatar}>
             <Avatar src="https://github.com/reedbarger/hooks-news/blob/master/public/logo.png?raw=true" />
-          </span>
+          </span> */}
         </Toolbar>
       </AppBar>
 
