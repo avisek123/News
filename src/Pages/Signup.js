@@ -59,6 +59,19 @@ function Signup() {
         width: "100%",
         padding: theme.spacing(5),
       },
+      signup: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundSize: "cover",
+        height: `calc(${100}vh)`,
+        background: `linear-gradient(
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.5)
+        ),
+        url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`,
+      },
       avatar: {
         flexGrow: 1,
       },
@@ -99,27 +112,43 @@ function Signup() {
       },
       submit: {
         margin: theme.spacing(3, 0, 2),
+        backgroundColor: "#ff7779",
+        color: "#fff",
+        "&:hover": { background: "#ff7779" },
       },
       flexRow: {
         display: "flex",
         justifyContent: "space-between",
       },
+      btn: {
+        backgroundColor: "teal",
+        "&:hover": { background: "teal" },
+        color: "#fff",
+      },
+      btnWrapper: {
+        display: "flex",
+        width: "10%",
+      },
     };
   });
   const classes = useStyle();
   return (
-    <div>
+    <div className={classes.signup}>
       <AppBar
-        // elevation={0}
+        elevation={0}
+        className={classes.btnWrapper}
+        style={{ backgroundColor: "transparent" }}
         position="fixed"
-        style={{
-          backgroundColor: "#ff6600",
-        }}
       >
         <Toolbar>
-          <span className={classes.avatar}>
-            <Avatar src="https://github.com/reedbarger/hooks-news/blob/master/public/logo.png?raw=true" />
-          </span>
+          <Button
+            variant="contained"
+            onClick={routeChange}
+            to="/Login"
+            className={classes.btn}
+          >
+            Sign in
+          </Button>
         </Toolbar>
       </AppBar>
 
@@ -135,7 +164,7 @@ function Signup() {
           </Typography>
           <form className={classes.form}>
             <TextField
-              variant="outlined"
+              variant="standard"
               margin="normal"
               required
               fullWidth
@@ -148,7 +177,7 @@ function Signup() {
               color="lightseagreen"
             />
             <TextField
-              variant="outlined"
+              variant="standard"
               margin="normal"
               required
               fullWidth
@@ -161,7 +190,7 @@ function Signup() {
               color="lightseagreen"
             />
             <TextField
-              variant="outlined"
+              variant="standard"
               margin="normal"
               required
               fullWidth
@@ -184,9 +213,11 @@ function Signup() {
               Sign Up
             </Button>
             <div className={classes.flexRow}>
-              <Button to="/ForgetPassword">Forgot password?</Button>
-              <Button onClick={routeChange} to="/Login">
-                SignIn
+              <Button
+                to="/ForgetPassword"
+                style={{ color: "grey", fontWeight: "bold" }}
+              >
+                Forgot password?
               </Button>
             </div>
           </form>

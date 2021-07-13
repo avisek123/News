@@ -40,11 +40,14 @@ function Login() {
         width: "100%",
         padding: theme.spacing(5),
       },
-      btn: {
+      btnWrapper: {
         display: "flex",
         width: "10%",
+      },
+      btn: {
         backgroundColor: "teal",
         "&:hover": { background: "teal" },
+        color: "#fff",
       },
       paper: {
         marginTop: theme.spacing(10),
@@ -112,6 +115,7 @@ function Login() {
     <div className={classes.login}>
       <AppBar
         elevation={0}
+        className={classes.btnWrapper}
         position="fixed"
         style={{
           backgroundColor: "transparent",
@@ -119,10 +123,10 @@ function Login() {
       >
         <Toolbar>
           <Button
-            // onClick={routeChangeToCraete}
+            onClick={routeChange}
+            to="/signup"
             variant="contained"
             className={classes.btn}
-            style={{ color: "#fff" }}
           >
             Signup
           </Button>
@@ -183,12 +187,10 @@ function Login() {
             >
               Sign In
             </Button>
-            <div className={classes.flexRow}>
-              <Button to="/ForgetPassword">Forgot password?</Button>
-              <Button onClick={routeChange} to="/signup">
-                Signup
-              </Button>
-            </div>
+
+            <Button to="/ForgetPassword" color="red">
+              Forgot password?
+            </Button>
           </form>
         </div>
       </Container>
