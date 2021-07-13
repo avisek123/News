@@ -41,10 +41,10 @@ function Login() {
         padding: theme.spacing(5),
       },
       btn: {
-        //flexGrow: 1,
         display: "flex",
         width: "10%",
         backgroundColor: "teal",
+        "&:hover": { background: "teal" },
       },
       paper: {
         marginTop: theme.spacing(10),
@@ -97,7 +97,10 @@ function Login() {
       submit: {
         margin: theme.spacing(3, 0, 2),
         backgroundColor: "#ff7779",
+        color: "#fff",
+        "&:hover": { background: "#ff7779" },
       },
+
       flexRow: {
         display: "flex",
         justifyContent: "space-between",
@@ -176,7 +179,6 @@ function Login() {
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
               className={classes.submit}
             >
               Sign In
