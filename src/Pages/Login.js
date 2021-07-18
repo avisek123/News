@@ -145,7 +145,6 @@ function Login() {
           </Typography>
           <form className={classes.form} onSubmit={handleLogin}>
             <TextField
-              variant="outlined"
               margin="normal"
               required
               fullWidth
@@ -154,7 +153,6 @@ function Login() {
               name="email"
               autoComplete="email"
               autoFocus
-              style={{ backgroundColor: "#fff" }}
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -162,9 +160,7 @@ function Login() {
               color="lightseagreen"
             />
             <TextField
-              variant="outlined"
               margin="normal"
-              style={{ backgroundColor: "#fff" }}
               required
               fullWidth
               name="password"

@@ -1,6 +1,6 @@
 import { Container, Grid } from "@material-ui/core";
 import React from "react";
-import { Header, StoryCard } from "../components";
+import { Header, Hero, MidSection, StoryCard } from "../components";
 import { database } from "../Configs";
 import { useAppContext, useStory } from "../Hooks";
 const Home = () => {
@@ -18,13 +18,8 @@ const Home = () => {
   return (
     <Container>
       <Header />
-      <Grid container spacing={10}>
-        {data?.map((item, index) => (
-          <Grid item key={index} xs={12} md={6} lg={4}>
-            <StoryCard story={item} handleDelete={handleDelete} />
-          </Grid>
-        ))}
-      </Grid>
+      <Hero />
+      <MidSection />
     </Container>
   );
 };

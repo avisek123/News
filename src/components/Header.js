@@ -1,21 +1,9 @@
 import React from "react";
-import {
-  AppBar,
-  IconButton,
-  makeStyles,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
-import { useAppContext } from "../Hooks";
-import HeaderBarSide from "./HeaderBarSide";
-const drawerWidth = 240;
+import { AppBar, Avatar, Button, makeStyles, Toolbar } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
-  // appBar: {
-  //   [theme.breakpoints.up("sm")]: {
-  //     width: `calc(100% - ${drawerWidth}px)`,
-  //     marginLeft: drawerWidth,
-  //   },
-  // },
+  appBar: {
+    backgroundColor: "white",
+  },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
@@ -23,18 +11,36 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   toolBar: theme.mixins.toolbar,
+  headerOptions: {
+    display: "flex",
+    justifyContent: "center",
+    flex: 1,
+    fontFamily: "Lora, serif",
+  },
+  headerBtn: {
+    color: "#444",
+    fontFamily: '"Lora", serif',
+  },
 }));
 
 function Header() {
   const classes = useStyles();
-  const { user, userData } = useAppContext();
 
   return (
     <div>
-      <AppBar className={classes.appBar}>
-        <Toolbar style={{ justifyContent: "space-between" }}>
-          <Typography variant="h6">{user.displayName}</Typography>
-          <HeaderBarSide />
+      <AppBar elevation={0} position="fixed" className={classes.appBar}>
+        <Toolbar className="d-flex justify-content-between">
+          <Avatar
+            alt=""
+            src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          ></Avatar>
+          <div className={classes.headerOptions}>
+            <Button className={classes.headerBtn}>Home</Button>
+            <Button className={classes.headerBtn}>About</Button>
+            <Button className={classes.headerBtn}>Contact</Button>
+            <Button className={classes.headerBtn}>Write</Button>
+          </div>
+          <Button>Logout</Button>
         </Toolbar>
       </AppBar>
     </div>
