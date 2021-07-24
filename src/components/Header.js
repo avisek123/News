@@ -1,5 +1,6 @@
 import React from "react";
 import { AppBar, Avatar, Button, makeStyles, Toolbar } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "white",
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <div>
@@ -35,10 +37,20 @@ function Header() {
             src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
           ></Avatar>
           <div className={classes.headerOptions}>
-            <Button className={classes.headerBtn}>Home</Button>
+            <Button
+              onClick={() => history.push("/")}
+              className={classes.headerBtn}
+            >
+              Home
+            </Button>
             <Button className={classes.headerBtn}>About</Button>
             <Button className={classes.headerBtn}>Contact</Button>
-            <Button className={classes.headerBtn}>Write</Button>
+            <Button
+              onClick={() => history.push("/write")}
+              className={classes.headerBtn}
+            >
+              Write
+            </Button>
           </div>
           <Button>Logout</Button>
         </Toolbar>

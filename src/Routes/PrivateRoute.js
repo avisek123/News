@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Home, Create, Edit, ViewStory, Single } from "../Pages";
+import { Home, Create, Edit, ViewStory, Single, Write } from "../Pages";
 const PrivateRoute = () => {
   return (
     <Switch>
@@ -9,6 +9,7 @@ const PrivateRoute = () => {
       <Route exact path="/:id/edit" component={Edit} />
       <Route exact path="/:id/ViewStory" component={ViewStory} />
       <Route exact path="/single" component={Single} />
+      <Route exact path="/write" component={Write} />
     </Switch>
   );
 };
