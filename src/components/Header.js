@@ -1,13 +1,29 @@
 import React from "react";
-import { AppBar, Avatar, Button, makeStyles, Toolbar } from "@material-ui/core";
+import {
+  AppBar,
+  Avatar,
+  Button,
+  makeStyles,
+  Toolbar,
+  IconButton,
+  Drawer,
+} from "@material-ui/core";
+import { Sort } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "white",
   },
-  menuButton: {
+  Button: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+  IconButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up("sm")]: {
+
+    [theme.breakpoints.up("md")]: {
       display: "none",
     },
   },
@@ -27,6 +43,17 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
   const classes = useStyles();
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+
+  const MobileMenu = () => {
+    return (
+      <div role="presentation">
+        <Drawer open={open} onClose={() => setOpen(!open)} variant="persistent">
+          <h2>Hi</h2>
+        </Drawer>
+      </div>
+    );
+  };
 
   return (
     <div>
@@ -39,22 +66,30 @@ function Header() {
           <div className={classes.headerOptions}>
             <Button
               onClick={() => history.push("/")}
-              className={classes.headerBtn}
+              className={`${classes.headerBtn} ${classes.Button}`}
             >
               Home
             </Button>
-            <Button className={classes.headerBtn}>About</Button>
-            <Button className={classes.headerBtn}>Contact</Button>
+            <Button className={`${classes.headerBtn} ${classes.Button}`}>
+              About
+            </Button>
+            <Button className={`${classes.headerBtn} ${classes.Button}`}>
+              Contact
+            </Button>
             <Button
               onClick={() => history.push("/write")}
-              className={classes.headerBtn}
+              className={`${classes.headerBtn} ${classes.Button}`}
             >
               Write
             </Button>
           </div>
-          <Button>Logout</Button>
+          <Button className={classes.Button}>Logout</Button>
+          <IconButton className={classes.IconButton}>
+            <Sort />
+          </IconButton>
         </Toolbar>
       </AppBar>
+      {MobileMenu}
     </div>
   );
 }
