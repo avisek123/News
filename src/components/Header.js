@@ -1,4 +1,3 @@
-import React from "react";
 import {
   AppBar,
   Avatar,
@@ -7,10 +6,14 @@ import {
   Toolbar,
   IconButton,
   Drawer,
+  List,
+  ListItem,
+  ListItemText,
 } from "@material-ui/core";
-import { Sort } from "@material-ui/icons";
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { Clear, Sort } from "@material-ui/icons";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "white",
@@ -38,8 +41,35 @@ const useStyles = makeStyles((theme) => ({
     color: "#444",
     fontFamily: '"Lora", serif',
   },
+  drawer: {
+    minWidth: 250,
+    [`@media (min-width:1140px)`]: {
+      display: "none",
+    },
+  },
 }));
-
+const Data = [
+  {
+    id: 1,
+    name: "Home",
+    route: "",
+  },
+  {
+    id: 2,
+    name: "About",
+    route: "about",
+  },
+  {
+    id: 3,
+    name: "Contact",
+    route: "contact",
+  },
+  {
+    id: 4,
+    name: "Write",
+    route: "write",
+  },
+];
 function Header() {
   const classes = useStyles();
   const history = useHistory();
@@ -49,7 +79,23 @@ function Header() {
     return (
       <div role="presentation">
         <Drawer open={open} onClose={() => setOpen(!open)} variant="persistent">
-          <h2>Hi</h2>
+          {/* <List disablePadding className={classes.drawer}>
+            <ListItem>
+              <h2>Hi</h2>
+            </ListItem>
+          </List> */}
+          {Data.map((item) => (
+            <List
+              key={item?.id}
+              disablePadding
+              onClick={() => setOpen(!open)}
+              className={classes.drawer}
+            >
+              <ListItem button component={Link} to={`/${item.route}`}>
+                <ListItemText primary={item?.name} />
+              </ListItem>
+            </List>
+          ))}
         </Drawer>
       </div>
     );
@@ -84,12 +130,19 @@ function Header() {
             </Button>
           </div>
           <Button className={classes.Button}>Logout</Button>
-          <IconButton className={classes.IconButton}>
-            <Sort />
+          <IconButton
+            onClick={() => setOpen(!open)}
+            className={classes.IconButton}
+          >
+            {open ? (
+              <Clear style={{ background: "none" }} />
+            ) : (
+              <Sort style={{ background: "none" }} />
+            )}
           </IconButton>
         </Toolbar>
       </AppBar>
-      {MobileMenu}
+      <MobileMenu />
     </div>
   );
 }
