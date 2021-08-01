@@ -5,8 +5,11 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     objectFit: "cover",
     marginTop: theme.spacing(10),
-    height: "30rem",
+    height: "75vh",
     borderRadius: 10,
+    [theme.breakpoints.down("md")]: {
+      height: "38vh",
+    },
   },
 }));
 
