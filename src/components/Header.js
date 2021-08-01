@@ -79,11 +79,6 @@ function Header() {
     return (
       <div role="presentation">
         <Drawer open={open} onClose={() => setOpen(!open)} variant="persistent">
-          {/* <List disablePadding className={classes.drawer}>
-            <ListItem>
-              <h2>Hi</h2>
-            </ListItem>
-          </List> */}
           {Data.map((item) => (
             <List
               key={item?.id}
