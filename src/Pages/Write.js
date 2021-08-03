@@ -4,6 +4,11 @@ import Header from "../components/Header";
 const useStyles = makeStyles((theme) => ({
   write: {
     marginTop: theme.spacing(12),
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    flexDirection: "column",
   },
   writeImg: {
     width: "65vw",
@@ -11,16 +16,18 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     objectFit: "cover",
     borderRadius: 10,
-    marginLeft: "15rem",
+    justifyContent: "center",
+
     [theme.breakpoints.down("md")]: {
       height: "38vh",
+      width: "70vh",
     },
   },
   writeForm: {
     position: "relative",
   },
   writeFormGroup: {
-    marginLeft: "15rem",
+    marginLeft: "7rem",
     display: "flex",
     alignItems: "center",
   },
@@ -74,6 +81,7 @@ function Write() {
   return (
     <>
       <Header />
+
       <div className={classes.write}>
         <img
           className={classes.writeImg}

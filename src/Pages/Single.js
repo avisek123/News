@@ -8,10 +8,10 @@ function Single() {
     <div>
       <Header />
       <Grid style={{ marginTop: "5rem" }} container>
-        <Grid item xs={9} md={9} lg={9}>
+        <Grid item xs={11} md={9} lg={9}>
           <SingleItem />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item md={3} lg={3}>
           <Sidebar />
         </Grid>
       </Grid>

@@ -62,11 +62,7 @@ function Post() {
         history.push("/single");
       }}
     >
-      <Grid
-        container
-        spacing={4}
-        style={{ width: "90%", margin: "0px 25px 40px 20px" }}
-      >
+      <Grid container spacing={4} style={{ margin: "0px 1rem 0px 0px" }}>
         <Grid item xs={12} md={6} lg={6}>
           <Card elevation={0}>
             <CardActionArea>

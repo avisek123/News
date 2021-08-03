@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    width: "100%",
   },
   sidebarItemImg: {
     marginTop: "15px",

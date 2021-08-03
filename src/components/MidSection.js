@@ -7,10 +7,10 @@ function MidSection() {
   return (
     <div>
       <Grid container>
-        <Grid item xs={9} md={9} lg={9}>
+        <Grid item xs={11} md={9} lg={9}>
           <Post />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item md={3} lg={3}>
           <Sidebar />
         </Grid>
       </Grid>
