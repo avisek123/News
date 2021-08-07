@@ -7,11 +7,11 @@ function Single() {
   return (
     <div>
       <Header />
-      <Grid style={{ marginTop: "5rem" }} container>
-        <Grid item xs={11} md={9} lg={9}>
+      <Grid container>
+        <Grid style={{ marginTop: "4rem" }} item xs={11} md={9} lg={9}>
           <SingleItem />
         </Grid>
-        <Grid item md={3} lg={3}>
+        <Grid style={{ marginTop: "5rem" }} item md={3} lg={3}>
           <Sidebar />
         </Grid>
       </Grid>

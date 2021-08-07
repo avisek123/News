@@ -1,6 +1,7 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
-import Header from "../components/Header";
+import { Container, makeStyles } from "@material-ui/core";
+import { useState } from "react";
+
 const useStyles = makeStyles((theme) => ({
   write: {
     marginTop: theme.spacing(12),
@@ -27,9 +28,12 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   writeFormGroup: {
-    marginLeft: "7rem",
+    width: "65vw",
     display: "flex",
     alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   writeIcon: {
     width: "1.6rem",
@@ -49,21 +53,25 @@ const useStyles = makeStyles((theme) => ({
     padding: "1.1rem",
     width: "70vw",
   },
+
   writeInputTitle: {
     fontSize: "1.8rem",
-    border: "none",
+    border: "none ",
     padding: "1.1rem",
+    outline: "none",
   },
   writeText: {
     width: "70vw",
-    height: "100vh",
+    height: "50vh",
     fontFamily: "inherit",
     fontSize: "1.1rem",
+    outline: "none",
+    border: "none ",
   },
   writeSubmit: {
     position: "absolute",
     top: "2%",
-    right: "10%",
+    right: "1%",
     color: "white",
     backgroundColor: "teal",
     padding: "10px",
@@ -77,11 +85,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Write() {
   const classes = useStyles();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   return (
-    <>
-      <Header />
-
+    <Container>
       <div className={classes.write}>
         <img
           className={classes.writeImg}
@@ -99,6 +107,8 @@ function Write() {
               placeholder="Title"
               type="text"
               autoFocus={true}
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
             />
           </div>
           <div className={classes.writeFormGroup}>
@@ -107,6 +117,8 @@ function Write() {
               placeholder="Tell your story..."
               type="text"
               autoFocus={true}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
           <button className={classes.writeSubmit} type="submit">
@@ -114,7 +126,7 @@ function Write() {
           </button>
         </form>
       </div>
-    </>
+    </Container>
   );
 }
 
