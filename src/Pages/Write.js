@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, makeStyles } from "@material-ui/core";
+import { Container, makeStyles, TextField } from "@material-ui/core";
 import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       height: "38vh",
-      width: "70vh",
+      width: "70vw",
     },
   },
   writeForm: {
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: "65vw",
     display: "flex",
     alignItems: "center",
+    padding: "1em 0",
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
@@ -55,14 +56,20 @@ const useStyles = makeStyles((theme) => ({
   },
 
   writeInputTitle: {
-    fontSize: "1.8rem",
+    "& input::placeholder": {
+      fontSize: "2.5rem",
+      padding: "1em 0",
+    },
     border: "none ",
     padding: "1.1rem",
     outline: "none",
+    width: "80%",
+    backgroundColor: "red",
+    height: "auto",
   },
   writeText: {
     width: "70vw",
-    height: "50vh",
+    height: "70vh",
     fontFamily: "inherit",
     fontSize: "1.1rem",
     outline: "none",
@@ -82,6 +89,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
   },
+  wrapper: {
+    display: "flex",
+    flexDirection: "row",
+  },
 }));
 function Write() {
   const classes = useStyles();
@@ -96,19 +107,24 @@ function Write() {
           src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
           alt=""
         />
+
         <form action="" className={classes.writeForm}>
           <div className={classes.writeFormGroup}>
             <label htmlFor="fileInput">
               <i className={`${classes.writeIcon} fas fa-plus`}></i>
             </label>
             <input id="fileInput" type="file" style={{ display: "none" }} />
-            <input
-              className={classes.writeInputTitle}
+
+            <TextField
+              required
+              fullWidth
+              id="title"
               placeholder="Title"
-              type="text"
-              autoFocus={true}
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
+              className={classes.writeInputTitle}
+              name="title"
+              autoComplete="title"
+              autoFocus
+              color="lightseagreen"
             />
           </div>
           <div className={classes.writeFormGroup}>

@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   headerOptions: {
     display: "flex",
     justifyContent: "center",
+
     flex: 1,
     fontFamily: "Lora, serif",
   },
